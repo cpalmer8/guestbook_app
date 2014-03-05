@@ -1,15 +1,15 @@
 class GuestbookMessagesController < ApplicationController
   def new
-    @message = GuestbookMessage.new
+    @guestbook_message = GuestbookMessage.new
   end
 
   def create
-    @message = GuestbookMessage.new(params[:message])
-    if @message.save
+    @guestbook_message = current_user.guestbook_messages.build(message_params)
+    if @guestbook_message.save
       flash[:success] = "Message created!"
       redirect_to '/home'
     else
-      render 'new'
+      redirect_to '/users/1'
     end
   end
 
@@ -18,6 +18,11 @@ class GuestbookMessagesController < ApplicationController
 
   def show
     @messages = GuestbookMessage.all
-    @message ||= GuestbookMessage.new
+    @guestbook_message = current_user.guestbook_messages.build
   end
+
+  private
+    def message_params
+      params.require(:guestbook_message).permit(:message, :location, :time)
+    end
 end

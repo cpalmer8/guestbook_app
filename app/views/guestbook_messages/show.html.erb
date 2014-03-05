@@ -1,7 +1,7 @@
-<% @messages.each do |message| %>
+<% @messages.each do |m| %>
   <li>
-    message.message
+  <%= m.message %>
   </li>
 <% end %>
 
-<%= render partial: 'form', locals: {message: @message }  %> 
+<%= render partial: 'form', locals: {guestbook_message: @guestbook_message }  %> 
