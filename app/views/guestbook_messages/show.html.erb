@@ -1,0 +1,7 @@
+<% @messages.each do |message| %>
+  <li>
+    message.message
+  </li>
+<% end %>
+
+<%= render partial: 'form', locals: {message: @message }  %> 

@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  message: MyString
+blank_message:
+  message:
   time: 2014-03-04 17:49:55
   user_id: 1
-  location: MyString
+  location: Minneapolis
 
-two:
-  message: MyString
+blank_location:
+  message: It's the past!
   time: 2014-03-04 17:49:55
   user_id: 1
-  location: MyString
+  location:
+
+null_user:
+  message: Hello world!
+  time: 2014-03-04 17:49:55
+  user_id:
+  location: Chicago
