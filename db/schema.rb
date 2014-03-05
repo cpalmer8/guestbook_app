@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302215723) do
+ActiveRecord::Schema.define(version: 20140304234955) do
+
+  create_table "guestbook_messages", force: true do |t|
+    t.string   "message"
+    t.datetime "time"
+    t.integer  "user_id"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guestbook_messages", ["user_id"], name: "index_guestbook_messages_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
