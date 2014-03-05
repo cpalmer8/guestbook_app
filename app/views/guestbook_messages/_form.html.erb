@@ -2,7 +2,7 @@
   <%= f.label :message %>
   <%= f.text_field :message %>
 
-  <%= f.hidden_field :location, :value => "Chicago" %>
+  <%= f.hidden_field :location, :value => current_user.location %>
   <%= f.hidden_field :time, :value => Time.now %>
   <%= f.submit "Post Message!" %>
 <% end %>
