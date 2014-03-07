@@ -18,7 +18,9 @@ class GuestbookMessagesController < ApplicationController
 
   def show
     @messages = GuestbookMessage.all
-    @guestbook_message = current_user.guestbook_messages.build
+    if signed_in?
+      @guestbook_message = current_user.guestbook_messages.build
+    end
   end
 
   private
