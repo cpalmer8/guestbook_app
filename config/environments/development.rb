@@ -24,7 +24,7 @@ GuestbookApp::Application.configure do
       :domain => "gmail.com",
       :authentication => :plain,
       :user_name => "c.elena.palmer@gmail.com",
-      :password => "9x15aGFp8Va5t9E"
+      :password => "pw"
    }
 
 
