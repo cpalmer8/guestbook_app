@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+blank_message:
+  message:
+  time: 2014-03-04 17:49:55
+  user_id: 1
+  location: Minneapolis
+
+blank_location:
+  message: It's the past!
+  time: 2014-03-04 17:49:55
+  user_id: 1
+  location:
+
+null_user:
+  message: Hello world!
+  time: 2014-03-04 17:49:55
+  user_id:
+  location: Chicago
