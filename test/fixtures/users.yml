@@ -12,3 +12,6 @@ invalid_email:
   name: Invalid Email
   email: d@@com
 
+valid_user:
+  name: Valid User
+  email: valid@example.com

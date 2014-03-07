@@ -6,13 +6,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "guestbook app", "#", id: "logo" %>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><%= link_to "Home", '/home' %></li>
+              <li><%= link_to "Sign In", '/signin' %></li>
+              <li><%= link_to "Sign Out", '/signout' %></li>
+            </ul>
+          </div>
+      </div>
+    </div>
+</div>
   <div class="container">
+    <div class="row">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
-</div>
+      <% end %>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+  </div>
+  </div>
 </body>
 </html>
