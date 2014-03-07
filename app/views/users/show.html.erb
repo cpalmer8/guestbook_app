@@ -7,4 +7,5 @@
     <li><%= message.message %>
         <p><%= User.find(message.user_id).location %> | <%= message.time %></p></li>
   <% end %>
+  <%= will_paginate @guestbook_messages %>
 </ul>

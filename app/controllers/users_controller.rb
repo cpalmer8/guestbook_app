@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'will_paginate/array'
   def new
     @user = User.new
   end
@@ -17,10 +18,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @guestbook_messages = @user.guestbook_messages
+    @guestbook_messages = @guestbook_messages.paginate(:page => params[:page], :per_page => 10)
   end
 
   def edit
-    @user = User.find(params[:id])
+    if signed_in?
+      @user = User.find(current_user.id)
+    else
+      flash[:error] = "You are not logged in."
+      redirect_to root_url
+    end
   end
 
   def update

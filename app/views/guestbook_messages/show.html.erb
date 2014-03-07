@@ -1,11 +1,17 @@
+<ul>
+<h1>Guestbook Messages</h1>
 <% @messages.each do |m| %>
-  <li>
-    <p>User: <%= User.find(m.user_id).name %></p>
-    <p>Message:  <%= m.message %></p>
-    <p>Time Posted: <%= m.time %></p>
-  </li>
-<% end %>
-
+   <li><p>Message:  <%= m.message %></p>
+       <p>User: <%= link_to User.find(m.user_id).name, '/users/%d' % m.user_id %></p>
+       <p>Time Posted: <%= m.time %></p>
+       <p>Location: <%= User.find(m.user_id).location %></p>    
+   </li>
+ <% end %>
+<%= will_paginate @messages %>
+</ul>
+<hr>
 <% if signed_in? %>
+  <h1>Post New Message</h1>      
   <%= render partial: 'form', locals: {guestbook_message: @guestbook_message }  %>
 <% end %>
+</div>

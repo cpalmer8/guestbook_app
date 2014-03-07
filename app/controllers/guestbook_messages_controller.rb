@@ -7,9 +7,10 @@ class GuestbookMessagesController < ApplicationController
     @guestbook_message = current_user.guestbook_messages.build(message_params)
     if @guestbook_message.save
       flash[:success] = "Message created!"
-      redirect_to '/home'
+      redirect_to root_url
     else
-      redirect_to '/users/1'
+      flash[:error] = "Oops. Message could not be posted. Message field is required."
+      redirect_to root_url
     end
   end
 
@@ -17,7 +18,7 @@ class GuestbookMessagesController < ApplicationController
   end
 
   def show
-    @messages = GuestbookMessage.all
+    @messages = GuestbookMessage.paginate(page: params[:page], :per_page => 10)
     if signed_in?
       @guestbook_message = current_user.guestbook_messages.build
     end
