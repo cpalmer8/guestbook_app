@@ -1,0 +1,11 @@
+<% @messages.each do |m| %>
+  <li>
+    <p>User: <%= User.find(m.user_id).name %></p>
+    <p>Message:  <%= m.message %></p>
+    <p>Time Posted: <%= m.time %></p>
+  </li>
+<% end %>
+
+<% if signed_in? %>
+  <%= render partial: 'form', locals: {guestbook_message: @guestbook_message }  %>
+<% end %>
