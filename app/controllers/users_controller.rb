@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     end
   end
 
+  # Uses will_paginate on the guestbook_messages variable so that each user's page 
+  # has their posts.
   def show
     @user = User.find(params[:id])
     @guestbook_messages = @user.guestbook_messages
@@ -31,12 +33,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "Account updated."
-      redirect_to @user
+    if signed_in?
+      @user = User.find(params[:id])
+      if @user.update_attributes(user_params)
+        flash[:success] = "Account updated."
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      flash[:error] = "You are not logged in."
+      redirect_to root_url
     end
   end
 
