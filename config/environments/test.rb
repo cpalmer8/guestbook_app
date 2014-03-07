@@ -30,7 +30,16 @@ GuestbookApp::Application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-
+  
+  config.action_mailer.deconfig.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => "587",
+      :domain => "gmail.com",
+      :authentication => :plain,
+      :user_name => "c.elena.palmer@gmail.com",
+      :password => "9x15aGFp8Va5t9E"
+  }
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 end
