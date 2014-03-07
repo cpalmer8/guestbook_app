@@ -1,2 +1,10 @@
 <title><%= @user.name %></title>
 <p><%= @user.name %>, <%= @user.email %></p>
+
+<h1>Messages</h1>
+<ul>
+  <% @guestbook_messages.each do |message| %>
+    <li><%= message.message %>
+        <p><%= User.find(message.user_id).location %> | <%= message.time %></p></li>
+  <% end %>
+</ul>
