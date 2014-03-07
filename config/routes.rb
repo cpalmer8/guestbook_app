@@ -3,10 +3,10 @@ GuestbookApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :guestbook_messages
   resources :guestbook_message
+  root 'guestbook_messages#show'
   match '/signup', to: 'users#new',         via: 'get'
   match '/signin', to: 'sessions#new',      via: 'get'
-  match '/signout', to: 'seassions#destroy', via: 'delete'
-  match '/home', to: 'guestbook_messages#show', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
